@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Siege Builder Fix</name>
+  <author>ifchen0</author>
+  <packageId>ifchen0.siegebuilderfix</packageId>
+  <url>https://github.com/ifchen0/SiegeBuilderFix</url>
+  <supportedVersions><li>1.6</li></supportedVersions>
+  <description>Fixes an error spam during sieges when the sieging group contains mechs.
+
+Symptom: once a siege camp starts assigning builders, the log fills with "Exception while ticking lord with job RimWorld.LordJob_Siege" (NullReferenceException in LordToil_Siege.SetAsBuilder), repeated on every tick. The error also stops the siege's own timer, so it never moves on by time.
+
+Cause: the siege picks builders among its pawns by checking only that construction work is not disabled. The game only disables work types for humans and for the player's own mechs, so a mech belonging to an NPC faction passes the check, gets picked as a builder, and the game then fails because mechs have no skills. Vanilla factions never bring mechs to a siege, but mods that add mechs to outlander or pirate raids (for example Mechs and Animals for NPC Factions) do.
+
+Fix: pawns without skills are never picked as siege builders; they defend the camp instead. A pawn that was already made a builder (for example in a save made while the error was happening) is switched to defending.
+
+Notes:
+- Safe to add to or remove from an existing save.
+- Only affects sieges; builders are still chosen the vanilla way among the remaining pawns.
+- Does not require Mechs and Animals for NPC Factions; it fixes the same error from any mod that puts mechs into sieging factions.</description>
+  <modDependencies>
+    <li><packageId>brrainz.harmony</packageId><displayName>Harmony</displayName><steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl></li>
+  </modDependencies>
+  <loadAfter><li>brrainz.harmony</li></loadAfter>
+</ModMetaData>
