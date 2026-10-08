@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Siege Builder Fix (Mechs in Sieges)</name>
+  <name>[DEPRECATED] Siege Builder Fix (Mechs in Sieges)</name>
   <author>ifchen0</author>
   <packageId>ifchen0.siegebuilderfix</packageId>
   <url>https://github.com/ifchen0/SiegeBuilderFix</url>
   <supportedVersions><li>1.6</li></supportedVersions>
-  <description>Fixes an error spam during sieges when the sieging group contains mechs.
+  <description>Deprecated: this mod is now part of Vanilla Tune-Up: Fixes &amp; Tweaks and will not be updated further. Please switch to that mod.
+
+Fixes an error spam during sieges when the sieging group contains mechs.
 
 Symptom: once a siege camp starts assigning builders, the log fills with "Exception while ticking lord with job RimWorld.LordJob_Siege" (NullReferenceException in LordToil_Siege.SetAsBuilder), repeated on every tick. The error also stops the siege's own timer, so it never moves on by time.
 
